@@ -1,0 +1,48 @@
+#include <iostream>
+#include <clocale>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    char c;
+    int a, b, d, s;
+    cout << "Введите форму контроля (E, T, P): ";
+    cin >> c;
+    switch (c)
+    {
+    case 'E': s = 50; break;
+    case 'T': s = 60; break;
+    case 'P': s = 70; break;
+    default:
+        cout << "Ошибка ввода";
+        return 0;
+    }
+    cout << "Введите основной балл (0-100): ";
+    cin >> a;
+    cout << "Введите посещаемость (0-100): ";
+    cin >> b;
+    cout << "Выполнена ли обязательная работа? (1 - да, 0 - нет): ";
+    cin >> d;
+    if (a < 0 || a > 100 || b < 0 || b > 100 || (d != 0 && d != 1))
+    {
+        cout << "Ошибка ввода";
+        return 0;
+    }
+    if (d == 0 || a < s || (c == 'E' && b < 75) || (c == 'T' && b < 60))
+    {
+        cout << "Контроль не пройден\n";
+        if (d == 0)
+            cout << "Причина: обязательная работа не выполнена\n";
+        if (a < s)
+            cout << "Причина: недостаточно основных баллов\n";
+        if (c == 'E' && b < 75)
+            cout << "Причина: посещаемость ниже 75\n";
+        if (c == 'T' && b < 60)
+            cout << "Причина: посещаемость ниже 60\n";
+    }
+    else
+    {
+        cout << "Контроль пройден";
+    }
+    return 0;
+}
