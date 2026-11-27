@@ -1,0 +1,36 @@
+#include <iostream>
+#include <clocale>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    int a;
+    cout << "Введите балл (0-100): ";
+    cin >> a;
+    if (a < 0 || a > 100)
+    {
+        cout << "Ошибка ввода";
+        return 0;
+    }
+    if (a >= 90)
+    {
+        cout << "Категория: A";
+    }
+    else if (a >= 80)
+    {
+        cout << "Категория: B";
+    }
+    else if (a >= 70)
+    {
+        cout << "Категория: C";
+    }
+    else if (a >= 60)
+    {
+        cout << "Категория: D";
+    }
+    else
+    {
+        cout << "Категория: F";
+    }
+    return 0;
+}
