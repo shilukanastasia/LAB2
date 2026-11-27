@@ -1,0 +1,42 @@
+#include <iostream>
+#include <clocale>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    char c;
+    int a, b = 0, s;
+    cout << "Введите код курса (P, M, W): ";
+    cin >> c;
+    switch (c)
+    {
+    case 'P': s = 65; break;
+    case 'M': s = 70; break;
+    case 'W': s = 60; break;
+    default:
+        cout << "Ошибка ввода";
+        return 0;
+    }
+    cout << "Введите балл за входной тест (0-100): ";
+    cin >> a;
+    if (a < 0 || a > 100)
+    {
+        cout << "Ошибка ввода";
+        return 0;
+    }
+    if (c == 'P' || c == 'W')
+    {
+        cout << "Введите дополнительный балл (0-100): ";
+        cin >> b;
+        if (b < 0 || b > 100)
+        {
+            cout << "Ошибка ввода";
+            return 0;
+        }
+    }
+    if (a >= s && ((c == 'P' && b >= 60) || (c == 'W' && b >= 50) || c == 'M'))
+        cout << "Поступление разрешено";
+    else
+        cout << "Поступление не разрешено";
+    return 0;
+}
